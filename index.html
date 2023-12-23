@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Título da página</title>
+</head>
+<body>
+    <form id="certificateForm"> <label for="name">Nome:</label> <input type="text" id="name" required> <br> <label for="code">Código:</label> <input type="text" id="code" required> <br> <button type="submit">Visualizar Certificado</button> </form> <div id="certificateContainer"></div>
+    
+    <script>
+        const certificates = [
+  { name: "Estudante 1", code: "ABC123", pdf: "certificado1.pdf" },
+  { name: "Estudante 2", code: "DEF456", pdf: "certificado2.pdf" },
+  // Adicione mais estudantes e seus respectivos certificados aqui
+];
+
+document.getElementById("certificateForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById("name").value;
+  const code = document.getElementById("code").value;
+  
+  const matchingCert = certificates.find(cert => cert.name === name && cert.code === code);
+  
+  if (matchingCert) {
+    const pdfLink = document.createElement("a");
+    pdfLink.href = matchingCert.pdf;
+    pdfLink.target = "_blank";
+    pdfLink.textContent = "Baixar Certificado";
+    
+    document.getElementById("certificateContainer").innerHTML = "";
+    document.getElementById("certificateContainer").appendChild(pdfLink);
+  } else {
+    document.getElementById("certificateContainer").innerHTML = "Certificado não encontrado.";
+  }
+});
+
+    </script>
+</body>
+</html>
+ 
