@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Título da página</title>
+    
+<link rel="stylesheet" href="certificado.css">
+  
 </head>
 <body>
-    <form id="certificateForm"> <label for="name">Nome:</label> <input type="text" id="name" required> <br> <label for="code">Código:</label> <input type="text" id="code" required> <br> <button type="submit">Visualizar Certificado</button> </form> <div id="certificateContainer"></div>
+    
+    <div class="cef">
+        <h2>Levante o Seu certificado </h2>
+        
+    <form id="certificateForm">
+        
+         <label for="name">Nome completo :</label></br> <input type="text" id="name" required placeholder="Digite o nome "> <br>
+         
+          <label for="code">Código de acesso:</label></br> <input type="text" id="code" required placeholder="Digite o seu código aqui"> <br>
+          
+           <button type="submit">Requisitar Certificado</button> </form></br>
+           <h1 id="demo"></h1>
+            <div id="certificateContainer"class="resul" id="certificateContainer"></div>
+   </div>
     
     <script>
         const certificates = [
-  { name: "Estudante 1", code: "ABC123", pdf: "certificado1.pdf" },
+  { name: "Fidel Pedro ", code: "87e87i ", pdf: "fidel.pdf" },
   { name: "Estudante 2", code: "DEF456", pdf: "certificado2.pdf" },
   // Adicione mais estudantes e seus respectivos certificados aqui
 ];
@@ -23,19 +39,36 @@ document.getElementById("certificateForm").addEventListener("submit", function(e
   const matchingCert = certificates.find(cert => cert.name === name && cert.code === code);
   
   if (matchingCert) {
+  
+  
+  
     const pdfLink = document.createElement("a");
     pdfLink.href = matchingCert.pdf;
     pdfLink.target = "_blank";
-    pdfLink.textContent = "Baixar Certificado";
+    name
+    pdfLink.textContent = "Foi aprovado, baixe o Certificado";
     
     document.getElementById("certificateContainer").innerHTML = "";
     document.getElementById("certificateContainer").appendChild(pdfLink);
-  } else {
-    document.getElementById("certificateContainer").innerHTML = "Certificado não encontrado.";
+  } 
+  
+   
+  if (matchingCert) {
+  const Nome =document.getElementById("demo").innerHTML="parabéns "+ name
+  
+ } 
+  
+  
+  else {
+    document.getElementById("certificateContainer").innerHTML = "Certificado não encontrado, ou você não enviou os dados ou preenche corretamente os dados";
+    const Nome =document.getElementById("demo").innerHTML=""
   }
 });
 
     </script>
+    <footer>
+        <h6>fale com tutor</br>
+          <a href="https://chat.whatsapp.com/CUXF4evQ6Ok0rgOkrMJZcQ" class="wh"></a></h6>
+    </footer>
 </body>
 </html>
- 
