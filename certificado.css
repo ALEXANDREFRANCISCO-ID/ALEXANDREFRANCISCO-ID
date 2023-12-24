@@ -4,6 +4,7 @@ Body{
     justify-content:center;
     Float:center;
     justify-items:center;
+    font-family: "Arial", sans-serif;
 }
 .cef input, button{
     Padding:12px;
