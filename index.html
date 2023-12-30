@@ -14,51 +14,7 @@
   
 </head>
 <body>  
-<h1>Download de Certificados</h1>
-<label for="nome-input">Nome:</label>
-<input type="text" id="nome-input">
-<br>
-<label for="codigo-input">Código de Acesso:</label>
-<input type="text" id="codigo-input">
-<br>
-<button onclick="baixarCertificado()">Baixar</button>
+<h1>A vetrina está em manutenção, visite mais tarde </h1>
 
-    <p id="mensagem"></p>
-    
-    <script>
-        var certificados = [
-      { nome: "Aniceto Andrade Marçalo ", codigo: "DEF457 ", url: "Certificate(1).pdf" },
-      { nome: "Nhympine Samuel Muleia ", codigo: "677896 ", url: "Certificado.pdf" },
-      // outros certificados...
-  ];
-  
-  function baixarCertificado() {
-      var nomeInput = document.getElementById("nome-input");
-      var codigoInput = document.getElementById("codigo-input");
-      var nome = nomeInput.value.trim();
-      var codigo = codigoInput.value.trim();
-      var certificadoEncontrado = false;
-      
-      for (var i = 0; i < certificados.length; i++) {
-          if (certificados[i].nome.toLowerCase() === nome.toLowerCase() && certificados[i].codigo === codigo) {
-              certificadoEncontrado = true;
-              // Aqui você pode fazer o download do certificado usando a URL fornecida
-              window.open(certificados[i].url, "_blank");
-              break;
-          }
-      }
-      
-      if (!certificadoEncontrado) {
-          alert("Certificado não encontrado. Por favor, verifique o nome e código de acesso digitados.");
-      }
-      
-      nomeInput.value = ""; // Limpa o campo de nome
-      codigoInput.value = ""; // Limpa o campo de código de acesso
-  }
-    </script>
-    <footer>
-        
-          <a href="https://chat.whatsapp.com/CUXF4evQ6Ok0rgOkrMJZcQ" class="wh"></a></h6>
-    </footer>
 </body>
 </html>
