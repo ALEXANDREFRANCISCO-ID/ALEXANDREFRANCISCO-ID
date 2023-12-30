@@ -49,8 +49,7 @@ function baixarCertificado() {
         link.href = certificados[nome].arquivo;
         link.download = "Certificado.pdf";
         link.click();
-        mensagem.textContent = "";
-        mensagem.innerHTML = <a href="${link.href}" download="${link.download}">Baixar Certificado</a>
+        
     } else {
         // Certificado não encontrado, exibir mensagem de erro
         mensagem.textContent = "Certificado não encontrado. Verifique o nome e código de acesso.";
