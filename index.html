@@ -14,29 +14,48 @@
   
 </head>
 <body>  
-<form id="formulario1">
-  <label for="nome1">Nome:</label>
-  <input type="text" id="nome1" required>
-  <label for="codigo1">Código:</label>
-  <input type="text" id="codigo1" required>
-  <button type="submit">Baixar Certificado</button>
-</form>
-
+<h1>Download de Certificados</h1>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" placeholder="Digite o nome"><br>
+    <label for="codigo">Código de Acesso:</label>
+    <input type="text" id="codigo" placeholder="Digite o código de acesso"><br>
+    <button onclick="baixarCertificado()">Baixar Certificado</button>
+    <p id="mensagem"></p>
     
     <script>
-        document.getElementById("formulario1").addEventListener("submit", function(e) {
-  e.preventDefault(); // Impede o envio do formulário
+        const certificados = {
+    "Nhympine Samuel Muleia ": {
+        codigo: "677896 ",
+        arquivo: "certificado.pdf"
+    },
+    "Aniceto Andrade Marçalo ": {
+        codigo: "DEF457 ",
+        arquivo: "certificate2.pdf"
+    },
+    // adicionar mais certificados aqui
+};
 
-  // Verifica se o nome e código correspondem a um estudante válido
-  var nome = document.getElementById("nome1").value;
-  var codigo = document.getElementById("codigo1").value;
-  if (nome == "Alexandre Francisco " && codigo =="888") {
-    // Baixa o certificado correspondente
-    window.location.href = "Certificado.pdf";
-  } else {
-    alert("Nome ou código incorretos. Não é possível baixar o certificado");
-  }
-});
+function baixarCertificado() {
+    const nomeInput = document.getElementById("nome");
+    const codigoInput = document.getElementById("codigo");
+    const mensagem = document.getElementById("mensagem");
+
+    const nome = nomeInput.value;
+    const codigo = codigoInput.value;
+
+    if (certificados[nome] && certificados[nome].codigo === codigo) {
+        // Certificado encontrado, baixar o arquivo
+        const link = document.createElement("a");
+        link.href = certificados[nome].arquivo;
+        link.download = "Certificado.pdf";
+        link.click();
+        mensagem.textContent = "";
+    } else {
+        // Certificado não encontrado, exibir mensagem de erro
+        mensagem.textContent = "Certificado não encontrado. Verifique o nome e código de acesso.";
+    }
+}
+
 
     </script>
     <footer>
