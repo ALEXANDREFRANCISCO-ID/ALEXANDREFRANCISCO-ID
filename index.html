@@ -13,60 +13,41 @@
 
   
 </head>
-<body>
-    
-    <div class="cef">
-        <h2>Levante o Seu certificado </h2>
-        
-    <form id="certificateForm">
-        
-         <label for="name">Nome completo :</label></br> <input type="text" id="name" required placeholder="Digite o nome "> <br>
-         
-          <label for="code">Código de acesso:</label></br> <input type="text" id="code" required placeholder="Digite o seu código aqui"> <br>
-          
-           <button type="submit">Requisitar Certificado</button> </form></br>
-           <h1 id="demo"></h1>
-            <div id="certificateContainer"class="resul" id="certificateContainer"></div>
-   </div>
+<body>  
+    <form id="downloadForm">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" required><br><br>
+    <label for="code">Código:</label>
+    <input type="text" id="code" required><br><br>
+    <button type="submit">Baixar Certificado</button>
+</form>
     
     <script>
-        const certificates = [         
-  { name: "Aniceto Andrade Marçalo ", code: "DEF456 ", pdf: "Certificate(1).pdf" },
-  // Adicione mais estudantes e seus respectivos certificados aqui
-];
-
-document.getElementById("certificateForm").addEventListener("submit", function(event) {
-  event.preventDefault();
+        document.getElementById('downloadForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // impede o formulário de ser enviado automaticamente
   
-  const name = document.getElementById("name").value;
-  const code = document.getElementById("code").value;
+  var name = document.getElementById('name').value;
+  var code = document.getElementById('code').value;
   
-  const matchingCert = certificates.find(cert => cert.name == name && cert.code == code);
+  // Certificados e seus nomes e códigos associados
+  var certificates = [
+    { name: 'Nhympine Samuel Muleia ', code: '677896 ', url: 'Cerificado.pdf' },
+    { name: 'Aniceto Andrade Marçalo ', code: 'DEF457 ', url: 'Certificate2.pdf' },
+    // Adicione o restante dos certificados aqui
+  ];
   
-  if (matchingCert) {
+  var certificate = certificates.find(function(c) {
+    return c.name === name && c.code === code;
+  });
   
-  
-  
-    const pdfLink = document.createElement("a");
-    pdfLink.href = matchingCert.pdf;
-    pdfLink.target = "_blank";
-    name
-    pdfLink.textContent = "Foi aprovado, baixe o Certificado";
-    
-    document.getElementById("certificateContainer").innerHTML = "";
-    document.getElementById("certificateContainer").appendChild(pdfLink);
-  } 
-  
-   
-  if (matchingCert) {
-  const Nome =document.getElementById("demo").innerHTML="parabéns "+ name
-  
- } 
-  
-  
-  else {
-    document.getElementById("certificateContainer").innerHTML = "Certificado não encontrado, ou você não enviou os dados ou preenche corretamente os dados";
-    const Nome =document.getElementById("demo").innerHTML=""
+  if (certificate) {
+    // Cria um link para download com base no certificado encontrado
+    var link = document.createElement('a');
+    link.href = certificate.url;
+    link.download = certificate.name + '.pdf';
+    link.click(); // Inicia automaticamente o download
+  } else {
+    alert('Nome ou código incorretos!');
   }
 });
 
