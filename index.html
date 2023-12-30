@@ -15,48 +15,46 @@
 </head>
 <body>  
 <h1>Download de Certificados</h1>
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" placeholder="Digite o nome"><br>
-    <label for="codigo">Código de Acesso:</label>
-    <input type="text" id="codigo" placeholder="Digite o código de acesso"><br>
-    <button onclick="baixarCertificado()">Baixar Certificado</button>
+<label for="nome-input">Nome:</label>
+<input type="text" id="nome-input">
+<br>
+<label for="codigo-input">Código de Acesso:</label>
+<input type="text" id="codigo-input">
+<br>
+<button onclick="baixarCertificado()">Baixar</button>
+
     <p id="mensagem"></p>
     
     <script>
-        const certificados = {
-        "nome": {
-        codigo: "677896 ",
-        arquivo: "Certificado.pdf"
-    },
-        "nome": {
-        codigo: "DEF457 ",
-        arquivo: "Certificate2.pdf"
-    },
-    // adicionar mais certificados aqui
-};
-
-function baixarCertificado() {
-    const nomeInput = document.getElementById("nome");
-    const codigoInput = document.getElementById("codigo");
-    const mensagem = document.getElementById("mensagem");
-
-    const nome = nomeInput.value;
-    const codigo = codigoInput.value;
-
-    if (certificados[nome] && certificados[nome].codigo === codigo) {
-        // Certificado encontrado, baixar o arquivo
-        const link = document.createElement("a");
-        link.href = certificados[nome].arquivo;
-        link.download = "Certificado.pdf";
-        link.click();
-        
-    } else {
-        // Certificado não encontrado, exibir mensagem de erro
-        mensagem.textContent = "Certificado não encontrado. Verifique o nome e código de acesso.";
-    }
-}
-
-
+        var certificados = [
+      { nome: "Fulano", codigo: "1234", url: "Certificado.pdf" },
+      { nome: "Ciclano", codigo: "", url: "https://example.com/certificado2.pdf" },
+      // outros certificados...
+  ];
+  
+  function baixarCertificado() {
+      var nomeInput = document.getElementById("nome-input");
+      var codigoInput = document.getElementById("codigo-input");
+      var nome = nomeInput.value.trim();
+      var codigo = codigoInput.value.trim();
+      var certificadoEncontrado = false;
+      
+      for (var i = 0; i < certificados.length; i++) {
+          if (certificados[i].nome.toLowerCase() === nome.toLowerCase() && certificados[i].codigo === codigo) {
+              certificadoEncontrado = true;
+              // Aqui você pode fazer o download do certificado usando a URL fornecida
+              window.open(certificados[i].url, "_blank");
+              break;
+          }
+      }
+      
+      if (!certificadoEncontrado) {
+          alert("Certificado não encontrado. Por favor, verifique o nome e código de acesso digitados.");
+      }
+      
+      nomeInput.value = ""; // Limpa o campo de nome
+      codigoInput.value = ""; // Limpa o campo de código de acesso
+  }
     </script>
     <footer>
         
