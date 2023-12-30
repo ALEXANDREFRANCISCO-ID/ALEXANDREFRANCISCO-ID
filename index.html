@@ -14,39 +14,27 @@
   
 </head>
 <body>  
-    <form id="downloadForm">
-    <label for="name">Nome:</label>
-    <input type="text" id="name" required><br><br>
-    <label for="code">Código:</label>
-    <input type="text" id="code" required><br><br>
-    <button type="submit">Baixar Certificado</button>
+<form id="formulario1">
+  <label for="nome1">Nome:</label>
+  <input type="text" id="nome1" required>
+  <label for="codigo1">Código:</label>
+  <input type="text" id="codigo1" required>
+  <button type="submit">Baixar Certificado</button>
 </form>
+
     
     <script>
-        document.getElementById('downloadForm').addEventListener('submit', function(event) {
-  event.preventDefault(); // impede o formulário de ser enviado automaticamente
-  
-  var name = document.getElementById('name').value;
-  var code = document.getElementById('code').value;
-  
-  // Certificados e seus nomes e códigos associados
-  var certificates = [
-    { name: 'Nhympine Samuel Muleia ', code: '677896 ', url: 'Cerificado.pdf' },
-    { name: 'Aniceto Andrade Marçalo ', code: 'DEF457 ', url: 'Certificate2.pdf' },
-    // Adicione o restante dos certificados aqui
-  ];
-  
-  var certificate = certificates.find(function(c) {
-    return c.name === name && c.code === code;
-  });
-  
-  if (certificate) {
-    // Cria um link para download com base no certificado encontrado
-    var link = document.createElement('a')
-    link.download = certificate.name + '.pdf';
-    link.click(); // Inicia automaticamente o download
+        document.getElementById("formulario1").addEventListener("submit", function(e) {
+  e.preventDefault(); // Impede o envio do formulário
+
+  // Verifica se o nome e código correspondem a um estudante válido
+  var nome = document.getElementById("nome1").value;
+  var codigo = document.getElementById("codigo1").value;
+  if (nome == "Alexandre Francisco " && codigo =="888") {
+    // Baixa o certificado correspondente
+    window.location.href = "Certificado.pdf";
   } else {
-    alert('Nome ou código incorretos!');
+    alert("Nome ou código incorretos. Não é possível baixar o certificado");
   }
 });
 
