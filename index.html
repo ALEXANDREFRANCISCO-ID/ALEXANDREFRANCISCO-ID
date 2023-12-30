@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+45<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -42,8 +42,7 @@
   
   if (certificate) {
     // Cria um link para download com base no certificado encontrado
-    var link = document.createElement('a');
-    link.href = certificate.url;
+    var link = document.createElement('a')
     link.download = certificate.name + '.pdf';
     link.click(); // Inicia automaticamente o download
   } else {
