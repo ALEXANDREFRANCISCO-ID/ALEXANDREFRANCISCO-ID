@@ -42,7 +42,7 @@ document.getElementById("certificateForm").addEventListener("submit", function(e
   const name = document.getElementById("name").value;
   const code = document.getElementById("code").value;
   
-  const matchingCert = certificates.find(cert => cert.name === name && cert.code === code);
+  const matchingCert = certificates.find(cert => cert.name == name && cert.code == code);
   
   if (matchingCert) {
   
