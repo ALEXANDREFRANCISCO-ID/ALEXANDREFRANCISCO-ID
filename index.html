@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Título da página</title>
-    
-<link rel="stylesheet" href="certificado.css">
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
+    <title>Certificado</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
 </head>
-<body>  
-<h1>A vetrina está em manutenção, visite mais tarde </h1>
 
+<body>
+    <form id="certificadoForm">
+        <label for="nomeAluno">Nome do Aluno:</label>
+        <input type="text" id="nomeAluno" name="nomeAluno" required>
+        <button type="button" onclick="gerarCertificado()">Gerar Certificado</button>
+    </form>
+
+    <script>
+        function gerarCertificado() {
+            // Obter o valor do campo de entrada
+            var nomeAluno = document.getElementById("nomeAluno").value;
+
+            // Se o campo de nome não estiver vazio, continuar com a geração do certificado
+            if (nomeAluno.trim() !== "") {
+                // Restante do seu script aqui, usando 'nomeAluno' ao adicionar o texto no certificado
+                var doc = new jsPDF('l', 'pt', 'a4');
+                // ...
+
+                // Adicionar o nome do aluno
+                doc.setFontSize(24);
+                doc.text(nomeAluno, centerX, centerY - 30, { align: 'center' });
+                // ...
+
+                // Salvar o certificado como PDF
+                doc.save('certificado.pdf');
+            } else {
+                alert("Por favor, preencha o nome do aluno.");
+            }
+        }
+    </script>
 </body>
 </html>
