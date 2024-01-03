@@ -31,7 +31,7 @@ document.getElementById("certificadoForm").addEventListener("submit", function(e
   
   var doc = new jsPDF();
   doc.text("Certificado", 100, 10);
-  doc.text("Nome do Aluno: " + nome, 10, 30);
+  doc.text( nome, 10, 30);
   doc.text("Curso: " + curso, 10, 40);
   doc.text("Data: " + data, 10, 50);
   doc.save("certificado.pdf");
@@ -39,7 +39,7 @@ document.getElementById("certificadoForm").addEventListener("submit", function(e
 </script>
 
 
-  <button onclick="generateCertificate()">Gerar Certificado</button>
+  
 
 </body>
 </html>
