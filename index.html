@@ -17,19 +17,21 @@
             // Obter o valor do campo de entrada
             var nomeAluno = document.getElementById("nomeAluno").value;
 
-            // Se o campo de nome não estiver vazio, continuar com a geração do certificado
+            // Se o campo de nome nÃ£o estiver vazio, continuar com a geraÃ§Ã£o do certificado
             if (nomeAluno.trim() !== "") {
-                // Restante do seu script aqui, usando 'nomeAluno' ao adicionar o texto no certificado
+                // Criar um novo documento jspdf
                 var doc = new jsPDF('l', 'pt', 'a4');
-                // ...
 
-                // Adicionar o nome do aluno
+                // Definir as configuraÃ§Ãµes do certificado
+                var centerX = doc.internal.pageSize.getWidth() / 2;
+                var centerY = doc.internal.pageSize.getHeight() / 2;
+
+                // Adicionar o texto do certificado
                 doc.setFontSize(24);
-                doc.text(nomeAluno, centerX, centerY - 30, { align: 'center' });
-                // ...
+                doc.text("Certificado para " + nomeAluno, centerX, centerY - 30, { align: 'center' });
 
                 // Salvar o certificado como PDF
-                doc.save('certificado.pdf');
+                doc.save('certificado_' + nomeAluno + '.pdf');
             } else {
                 alert("Por favor, preencha o nome do aluno.");
             }
