@@ -3,13 +3,14 @@
 <html>
 <head>
     <title>Certificado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
 
 </head>
 <form>
-<input type="text" id="nome">
-<input type="number" id="inicio">
-<input type="number" id="fim">
+<input type="text" id="nome"><br>
+<input type="number" id="inicio"><br>
+<input type="number" id="fim"><br>
 <button type="submit" onclick="certificado()">Certificado</button>
   </form>
   
@@ -17,7 +18,7 @@
 <body>
 <script>
 function certificado(){
-  var nome=document.getElementById("nome").value
+  var nme=document.getElementById("nome").value
 // Criar um novo documento jspdf
 var doc = new jsPDF('l', 'pt', 'a4');
 
@@ -61,7 +62,7 @@ logoImage.onload = function() {
   doc.text('Certificamos que', centerX, centerY - 130, { align: 'center' });
 
   // Adicionar o nome
-  var nome = nome;
+  var nome = nme;
   doc.setFontSize(24);
   doc.text(nome, centerX, centerY-30, { align: 'center' });
 
