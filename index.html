@@ -6,57 +6,41 @@
 
 </head>
 <body>
-<form id="certificateForm">
-  <label for="studentName">Nome do Aluno:</label>
-  <input type="text" id="studentName" name="studentName" required>
+<form id="certificadoForm">
+  <label for="nome">Nome do Aluno:</label>
+  <input type="text" id="nome" name="nome" required><br>
 
-  <label for="courseName">Nome do Curso:</label>
-  <input type="text" id="courseName" name="courseName" required>
+  <label for="curso">Curso:</label>
+  <input type="text" id="curso" name="curso" required><br>
+
+  <label for="data">Data:</label>
+  <input type="date" id="data" name="data" required><br>
 
   <button type="submit">Gerar Certificado</button>
 </form>
 
-<div id="certificateContainer"></div>
-
 
   <script>
-    var nome =document.getElementById("nome").value
-      functiodocument.getElementById("certificateForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  var studentName = document.getElementById("studentName").value;
-  var courseName = document.getElementById("courseName").value;
-
-  generateCertificate(studentName, courseName);
-});
-
-function generateCertificate(studentName, courseName) {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script>
+document.getElementById("certificadoForm").addEventListener("submit", function(event){
+  event.preventDefault(); // impede o envio do formulário
+  
+  var nome = document.getElementById("nome").value;
+  var curso = document.getElementById("curso").value;
+  var data = document.getElementById("data").value;
+  
   var doc = new jsPDF();
-
-  doc.setFontSize(20);
-  doc.text("Certificado", 105, 30, null, null, "center");
-
-  doc.setFontSize(12);
-  doc.text("Este certifica que", 105, 60, null, null, "center");
-  
-  doc.setFontSize(16);
-  doc.text(studentName, 105, 75, null, null, "center");
-  
-  doc.setFontSize(12);
-  doc.text("concluiu o curso de", 105, 90, null, null, "center");
-  
-  doc.setFontSize(16);
-  doc.text(courseName, 105, 105, null, null, "center");
-  
+  doc.text("Certificado", 100, 10);
+  doc.text("Nome do Aluno: " + nome, 10, 30);
+  doc.text("Curso: " + curso, 10, 40);
+  doc.text("Data: " + data, 10, 50);
   doc.save("certificado.pdf");
-  
-  var certificateContainer = document.getElementById("certificateContainer");
-  certificateContainer.innerHTML = "<iframe src='" + doc.output('datauristring') + "' style='width: 100%; height: 500px;'></iframe>";
-  
-  document.getElementById("certificateForm").reset();
-}
+});
+</script>
 
 
-  </script>
+  <button onclick="generateCertificate()">Gerar Certificado</button>
+
 </body>
 </html>
